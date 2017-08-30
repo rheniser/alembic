@@ -35,6 +35,11 @@
 ##-*****************************************************************************
 
 IF( ${ALEMBIC_ARNOLD_FOUND} )
-ADD_SUBDIRECTORY( Tests )
-ADD_SUBDIRECTORY( Procedural )
+  IF( ${ALEMBIC_ARNOLD_VERSION_ARCH_NUM} MATCHES "5")
+    ADD_SUBDIRECTORY( Procedural/v5 )
+    ADD_SUBDIRECTORY( Tests/v5 )
+  ELSE()
+    ADD_SUBDIRECTORY( Procedural )
+    ADD_SUBDIRECTORY( Tests )
+  ENDIF()
 ENDIF()
